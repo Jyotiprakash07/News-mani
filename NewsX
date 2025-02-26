@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsX</title>
+    <link rel="stylesheet" href="buy.css">
+    <script defer src="buy.js"></script>
+</head>
+<body>
+
+    <section class="top-txt">
+        <div class="head container">
+            <div class="head-txt">
+                <p>Get Newspaper at your doorstep with just one click.</p>
+            </div>
+        </div>
+        <div class="sign-in-up">
+            <a href="#">SIGN IN</a>
+            <a href="#">SIGN UP</a>
+        </div>
+    </section>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <input type="checkbox" id="checkbox">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="/">Home</a></li>
+                <li><a href="product.html">Shop</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="bg-light">
+        <div class="logo">
+            <img src="logo.png" alt="ShopeZ Logo">
+            <h1>NewsX</h1>
+        </div>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="/">
+                    <img src="logo.png" alt="ShopeZ Logo" width="120">
+                </a>
+                <ul>
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="product.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="home_page">
+            <div class="home_txt">
+                <p class="collection">HINDUSTAN TIMES</p>
+                <p class="collection">TIMES OF INDIA</p>
+                <p class="collection">INDIAN EXPRESS</p>
+                <p class="collection">THE TELEGRAPH</p>
+                <p>AND MANY MORE... ALSO LOCAL NEWSPAPERS...</p>
+            </div>
+            <div class="home_label">
+                <p>A specialist domain to order your newspaper. The right time to choose for study. Access the portal. We deliver quality content.</p>
+            </div>
+            <label for="search">Search</label>
+            <input type="search" id="search" placeholder="Search" name="search" title="Search">
+            <button class="shop-now">Shop Now <i class="fas fa-search"></i></button>
+            <div class="home_social_icons">
+                <a href="#"><i class="bx bxl-facebook"></i></a>
+                <a href="#"><i class="bx bxl-twitter"></i></a>
+                <a href="#"><i class="bx bxl-pinterest"></i></a>
+                <a href="#"><i class="bx bxl-youtube"></i></a>
+                <a href="#"><i class="bx bxl-instagram"></i></a>
+        
+            </div>
+        </div>
+    </section>
+
+    <section id="seller">
+            
+           
+
+            <div class="content">
+                <img src="hindustan.jpg" alt="Hindustan Times">
+                <p>Hindustan Times</p>
+                <div class="price">₹10</div>
+                <button class="buy-now">BUY NOW</button>
+                <a href="#ReadNow" class="read-now-button">READ NOW</a>
+            </div>
+
+            <div class="content">
+                <img src="timesofindia.jpg" alt="Times of India">
+                <p>Times Of India</p>
+                <div class="price">₹10</div>
+                <button class="buy-now">BUY NOW</button>
+                <a href="#ReadNow" class="read-now-button">READ NOW</a>
+            </div>
+
+            <div class="content">
+                <img src="indianexpress.jpg" alt="Indian Express">
+                <p>Indian Express</p>
+                <div class="price">₹10</div>
+                <button class="buy-now">BUY NOW</button>
+                <a href="#ReadNow" class="read-now-button">READ NOW</a>
+            </div>
+
+            <div class="content">
+                <img src="financialexpress.jpg" alt="Financial Express">
+                <p>Financial Express</p>
+                <div class="price">₹10</div>
+                <button class="buy-now">BUY NOW</button>
+                <a href="#ReadNow" class="read-now-button">READ NOW</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits">
+        <h4>Benefits of Reading Newspaper</h4>
+        <a href="#" target="_blank">Read More</a>
+    </section>
+
+    <section id="contact">
+        <div class="form">
+            <div class="form-txt">
+                <h4>Information</h4>
+                <h1>Contact Us</h1>
+                <p>As you might expect from a company that began as a high-end interiors contractor, we pay strict attention.</p>
+                <h3>INDIA</h3>
+            </div>
+                <label for="name">Your Name</label>
+                <input type="text" id="name" placeholder="Your Name" required title="Your Name">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" placeholder="Your Email" required title="Your Email">
+                <label for="message">Your Message</label>
+                <textarea id="message" placeholder="Your Message" required title="Your Message"></textarea>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>

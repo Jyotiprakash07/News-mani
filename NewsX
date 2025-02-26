@@ -81,46 +81,41 @@
                 <a href="#"><i class="bx bxl-pinterest"></i></a>
                 <a href="#"><i class="bx bxl-youtube"></i></a>
                 <a href="#"><i class="bx bxl-instagram"></i></a>
-        
             </div>
         </div>
     </section>
 
     <section id="seller">
-            
-           
+        <div class="content">
+            <img src="hindustan.jpg" alt="Hindustan Times">
+            <p>Hindustan Times</p>
+            <div class="price">₹10</div>
+            <button class="buy-now">BUY NOW</button>
+            <a href="#ReadNow" class="read-now-button">READ NOW</a>
+        </div>
 
-            <div class="content">
-                <img src="hindustan.jpg" alt="Hindustan Times">
-                <p>Hindustan Times</p>
-                <div class="price">₹10</div>
-                <button class="buy-now">BUY NOW</button>
-                <a href="#ReadNow" class="read-now-button">READ NOW</a>
-            </div>
+        <div class="content">
+            <img src="timesofindia.jpg" alt="Times of India">
+            <p>Times Of India</p>
+            <div class="price">₹10</div>
+            <button class="buy-now">BUY NOW</button>
+            <a href="#ReadNow" class="read-now-button">READ NOW</a>
+        </div>
 
-            <div class="content">
-                <img src="timesofindia.jpg" alt="Times of India">
-                <p>Times Of India</p>
-                <div class="price">₹10</div>
-                <button class="buy-now">BUY NOW</button>
-                <a href="#ReadNow" class="read-now-button">READ NOW</a>
-            </div>
+        <div class="content">
+            <img src="indianexpress.jpg" alt="Indian Express">
+            <p>Indian Express</p>
+            <div class="price">₹10</div>
+            <button class="buy-now">BUY NOW</button>
+            <a href="#ReadNow" class="read-now-button">READ NOW</a>
+        </div>
 
-            <div class="content">
-                <img src="indianexpress.jpg" alt="Indian Express">
-                <p>Indian Express</p>
-                <div class="price">₹10</div>
-                <button class="buy-now">BUY NOW</button>
-                <a href="#ReadNow" class="read-now-button">READ NOW</a>
-            </div>
-
-            <div class="content">
-                <img src="financialexpress.jpg" alt="Financial Express">
-                <p>Financial Express</p>
-                <div class="price">₹10</div>
-                <button class="buy-now">BUY NOW</button>
-                <a href="#ReadNow" class="read-now-button">READ NOW</a>
-            </div>
+        <div class="content">
+            <img src="financialexpress.jpg" alt="Financial Express">
+            <p>Financial Express</p>
+            <div class="price">₹10</div>
+            <button class="buy-now">BUY NOW</button>
+            <a href="#ReadNow" class="read-now-button">READ NOW</a>
         </div>
     </section>
 
@@ -137,13 +132,13 @@
                 <p>As you might expect from a company that began as a high-end interiors contractor, we pay strict attention.</p>
                 <h3>INDIA</h3>
             </div>
+            <form>
                 <label for="name">Your Name</label>
                 <input type="text" id="name" placeholder="Your Name" required title="Your Name">
                 <label for="email">Your Email</label>
                 <input type="email" id="email" placeholder="Your Email" required title="Your Email">
                 <label for="message">Your Message</label>
                 <textarea id="message" placeholder="Your Message" required title="Your Message"></textarea>
-                <textarea placeholder="Your Message" required></textarea>
                 <button type="submit">Send Message</button>
             </form>
         </div>

@@ -11,7 +11,7 @@ users = {
 
 @app.route('/')
 def index():
-    return render_template('buy.html')
+    return render_template('index.html')
 
 @app.route('/signin', methods=['POST'])
 def signin():

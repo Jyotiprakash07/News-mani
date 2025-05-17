@@ -13,9 +13,9 @@ This project aims to create a user-friendly platform where customers can order v
 - **Contact Form**: Users can contact us using the contact form provided.
 
 ## File Structure
-- **NewsX.html**: The main HTML file containing the structure of the website.
-- **NewsX.css**: The CSS file containing the styles for the website.
-- **NewsX.js**: The JavaScript file containing the functionality for the website.
+- **index.html**: The main HTML file containing the structure of the website.
+- **stle.css**: The CSS file containing the styles for the website.
+- **script.js**: The JavaScript file containing the functionality for the website.
 
 ## Getting Started
 To get started with the project, follow these steps:
@@ -25,7 +25,7 @@ To get started with the project, follow these steps:
    git clone https://github.com/Jyotiprakash07/our-website.git
 2. Navigate to project:
    cd our-website
-3. Open NewsX.html in your browser to view the website.
+3. Open index.html in your browser to view the website.
 Contributing
 If you are interested in contributing to the project, feel free to fork the repository and submit a pull request. Any contributions are welcome!
 

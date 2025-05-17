@@ -5,6 +5,9 @@
     --accent-color: #ff9900;
     --border-color: #333;
 }
+.visually-hidden { 
+  position: absolute; left: -9999px; 
+}
 
 body {
     background-color: var(--primary-color);

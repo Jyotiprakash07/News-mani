@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/signin">Sign In</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Our Blog & News</h1>
+    </header>
+
+    <section id="article-list"></section>
+
+    <footer>
+        <p>&copy; 2025 NewsX Website</p>
+    </footer>
+
+    <script>
+        fetch('/api/blog/articles')
+            .then(response => response.json())
+            .then(data => {
+                const articleList = document.getElementById('article-list');
+                data.forEach(article => {
+                    const div = document.createElement('div');
+                    div.classList.add('blog-article');
+                    div.innerHTML = `<h2>${article.title}</h2><p>${article.content}</p>`;
+                    articleList.appendChild(div);
+                });
+            })
+            .catch(error => console.error('Failed to fetch blog/news:', error));
+    </script>
+</body>
+</html>

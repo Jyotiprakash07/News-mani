@@ -169,19 +169,16 @@ button[type="submit"]:hover {
   background: #cc7a00;
 }
 
-.read-now-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 6px 14px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: linear-gradient(180deg, #4b91f7 0%, #367af6 100%);
-  border-radius: 6px;
-  color: #fff;
-  box-shadow: 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.3s;
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+    font-weight: bold;
 }
 
 /* Blog Page */
@@ -363,4 +360,34 @@ button[type="submit"]:hover {
 .carousel-card .read-now-button {
   margin-top: 10px;
   width: fit-content;
+} 
+.tv-frame {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin: 20px;
+  background: #333;
+  border: 12px solid #555;
+  border-radius: 20px;
+  box-shadow: inset 0 0 10px #000, 0 10px 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
+
+.tv-frame::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 10px;
+  background: #555;
+  border-radius: 5px;
+}
+
+.tv-screen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+

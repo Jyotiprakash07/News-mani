@@ -1,44 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Blog</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsmani</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <style>
+      /* Simple styling for articles */
+      #science-articles {
+        margin: 2rem auto;
+        max-width: 800px;
+        background: #f1f5fd;
+        border-radius: 14px;
+        box-shadow: 0 4px 24px rgba(37,99,235,0.07);
+        padding: 2rem;
+      }
+      #science-articles h2 {
+        color: #2563eb;
+        margin-bottom: 1rem;
+      }
+      .article-list {
+        list-style: none;
+        padding: 0;
+      }
+      .article-list li {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #e5e9f2;
+      }
+      .article-list li:last-child {
+        border-bottom: none;
+      }
+      .article-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #222;
+      }
+      .article-desc {
+        color: #555;
+        margin: 0.3rem 0 0.5rem 0;
+      }
+      .article-link {
+        color: #2563eb;
+        text-decoration: underline;
+        font-size: 0.98rem;
+      }
+    </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/shop">Shop</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/signin">Sign In</a></li>
-            <li><a href="/signup">Sign Up</a></li>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo" style="display: flex; align-items: center; gap: 10px; margin: 20px;">
+            <!-- Simple SVG logo for News-mani -->
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect width="40" height="40" rx="8" fill="#2563eb"/>
+              <text x="20" y="26" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial, sans-serif" fill="#fff" font-weight="bold">NM</text>
+            </svg>
+            <span style="font-size:1.7rem; color:#2563eb; font-weight:700;">News-mani</span>
+        </div>
+        <ul class="menu-items">
+            <li><a href="buy.html">Home</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
         </ul>
     </nav>
 
-    <header>
-        <h1>Our Blog & News</h1>
-    </header>
+    <!-- Blog Content -->
+    <section id="blog">
+        <h1>Latest News & Articles</h1>
+        <article>
+            <h2>The Importance of Reading Newspapers</h2>
+            <p>Newspapers keep you informed, enhance your knowledge, and sharpen your critical thinking skills.</p>
+        </article>
+        <div style="display:flex; gap:2rem; flex-wrap:wrap; margin-top:2rem;">
+            <div style="text-align:center;">
+                <img src="https://images.hindustantimes.com/images/app-images/2021/7/epaper-ht.jpg" alt="Hindustan Times" style="width:180px; border-radius:8px; box-shadow:0 2px 8px #2563eb22;">
+                <div>Hindustan Times</div>
+            </div>
+            <div style="text-align:center;">
+                <img src="https://static.toiimg.com/photo/90384221.cms" alt="Times of India" style="width:180px; border-radius:8px; box-shadow:0 2px 8px #2563eb22;">
+                <div>Times of India</div>
+            </div>
+            <div style="text-align:center;">
+                <img src="https://images.indianexpress.com/2023/11/indian-express-epaper.jpg" alt="Indian Express" style="width:180px; border-radius:8px; box-shadow:0 2px 8px #2563eb22;">
+                <div>Indian Express</div>
+            </div>
+            <div style="text-align:center;">
+                <img src="https://assets.thehindu.com/2023/10/01/images/thehindu-epaper.jpg" alt="The Hindu" style="width:180px; border-radius:8px; box-shadow:0 2px 8px #2563eb22;">
+                <div>The Hindu</div>
+            </div>
+        </div>
+    </section>
 
-    <section id="article-list"></section>
-
-    <footer>
-        <p>&copy; 2025 NewsX Website</p>
-    </footer>
+    <section id="science-articles">
+      <h2>Latest Scientific Articles</h2>
+      <ul class="article-list" id="articlesList">
+        <li>Loading scientific articles...</li>
+      </ul>
+    </section>
 
     <script>
-        fetch('/api/blog/articles')
-            .then(response => response.json())
-            .then(data => {
-                const articleList = document.getElementById('article-list');
-                data.forEach(article => {
-                    const div = document.createElement('div');
-                    div.classList.add('blog-article');
-                    div.innerHTML = `<h2>${article.title}</h2><p>${article.content}</p>`;
-                    articleList.appendChild(div);
-                });
-            })
-            .catch(error => console.error('Failed to fetch blog/news:', error));
+    // filepath: c:\Users\User\.vscode\NewsXwebsite\blog.html
+    // Replace with your actual NewsAPI key
+    const API_KEY = 'YOUR_API_KEY';
+    const articlesList = document.getElementById('articlesList');
+
+    fetch(`https://newsapi.org/v2/everything?q=science&language=en&sortBy=publishedAt&pageSize=5&apiKey=${API_KEY}`)
+      .then(response => response.json())
+      .then(data => {
+        articlesList.innerHTML = '';
+        if (data.articles && data.articles.length > 0) {
+          data.articles.forEach(article => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+              <div class="article-title">${article.title}</div>
+              <div class="article-desc">${article.description ? article.description : ''}</div>
+              <a class="article-link" href="${article.url}" target="_blank" rel="noopener">Read more</a>
+            `;
+            articlesList.appendChild(li);
+          });
+        } else {
+          articlesList.innerHTML = '<li>No scientific articles found at this time.</li>';
+        }
+      })
+      .catch(() => {
+        articlesList.innerHTML = '<li>Unable to load scientific articles. Please try again later.</li>';
+      });
     </script>
 </body>
 </html>

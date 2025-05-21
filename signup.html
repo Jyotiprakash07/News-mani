@@ -2,32 +2,141 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sign Up - NewsX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - News-mani</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Minimal page-specific styles */
+    .signup-container {
+      max-width: 400px;
+      margin: 3rem auto;
+      background: #f1f5fd;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(37,99,235,0.07);
+      padding: 2rem 2.5rem;
+    }
+    .signup-container h2 {
+      text-align: center;
+      color: #2563eb;
+      margin-bottom: 1.5rem;
+    }
+    .signup-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .signup-container label {
+      font-weight: 500;
+      color: #222;
+    }
+    .signup-container input {
+      padding: 0.7rem 1rem;
+      border: 1px solid #c7d2fe;
+      border-radius: 6px;
+      font-size: 1rem;
+      outline: none;
+      background: #fff;
+      transition: border 0.2s;
+    }
+    .signup-container input:focus {
+      border-color: #2563eb;
+    }
+    .signup-container button {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s;
+    }
+    .signup-container button:hover {
+      background: #1e40af;
+    }
+    .signup-message {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 1rem;
+    }
+    .signup-message.error {
+      color: #d32f2f;
+    }
+    .signup-message.success {
+      color: #2563eb;
+    }
+  </style>
 </head>
 <body>
-  <form id="signupForm">
-    <h2>Sign Up</h2>
-    <label for="signup-username">Username</label>
-    <input type="text" id="signup-username" required>
-    <label for="signup-email">Email</label>
-    <input type="email" id="signup-email" required>
-    <label for="signup-password">Password</label>
-    <input type="password" id="signup-password" required>
-    <button type="submit">Sign Up</button>
-  </form>
-  <script >
+  <div class="signup-container">
+    <h2>Create Your Account</h2>
+    <form id="signupForm" autocomplete="off">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required placeholder="Your Name">
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required placeholder="you@example.com">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required minlength="6" placeholder="Password">
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6" placeholder="Confirm Password">
+
+      <button type="submit">Sign Up</button>
+      <div id="signupMessage" class="signup-message"></div>
+    </form>
+    <p style="text-align:center; margin-top:1rem;">
+      Already have an account? <a href="signin.html" style="color:#2563eb;">Sign In</a>
+    </p>
+  </div>
+  <script>
+    // filepath: c:\Users\User\.vscode\NewsXwebsite\signup.html
     document.getElementById('signupForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  // Get values
-  const username = document.getElementById('signup-username').value;
-  const email = document.getElementById('signup-email').value;
-  const password = document.getElementById('signup-password').value;
-  // Save to localStorage (for demo only, not secure!)
-  localStorage.setItem('user', JSON.stringify({username, email, password}));
-  alert('Sign up successful! You can now sign in.');
-  window.location.href = 'signin.html';
-});
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const messageDiv = document.getElementById('signupMessage');
+
+      // Simple email validation
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      // Clear previous messages
+      messageDiv.textContent = '';
+      messageDiv.className = 'signup-message';
+
+      if (!name || !email || !password || !confirmPassword) {
+        messageDiv.textContent = 'Please fill out all fields.';
+        messageDiv.classList.add('error');
+        return;
+      }
+      if (!validateEmail(email)) {
+        messageDiv.textContent = 'Please enter a valid email address.';
+        messageDiv.classList.add('error');
+        return;
+      }
+      if (password.length < 6) {
+        messageDiv.textContent = 'Password must be at least 6 characters.';
+        messageDiv.classList.add('error');
+        return;
+      }
+      if (password !== confirmPassword) {
+        messageDiv.textContent = 'Passwords do not match.';
+        messageDiv.classList.add('error');
+        return;
+      }
+
+      // Simulate successful signup
+      messageDiv.textContent = 'Signup successful! You can now sign in.';
+      messageDiv.classList.add('success');
+      this.reset();
+    });
   </script>
 </body>
 </html>

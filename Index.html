@@ -10,53 +10,77 @@
 <body>
 
     <section class="top-txt">
-        <h2 class="visually-hidden">Welcome to News-mani</h2>
-        <div class="head container">
-            <div class="head-txt">
-                <p>Get Newspaper at your doorstep with just one click.</p>
-            
-        </div>
-        <div class="sign-in-up">
-            <a href="signin.html">SIGN IN</a>
-            <a href="signup.html">SIGN UP</a>
-        </div>
+        <h2 class="slide-in">Welcome to News-mani</h2>
+        <style>
+        .slide-in {
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideInLeft 1s forwards;
+        }
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        </style>
+       
     </section>
 
     <nav class="navbar">
-            <div class="hamburger-lines">
-                <span class="line line1"></span>
-                <span class="line line2"></span>
-                <span class="line line3"></span>
-            </div>
-        <div class="logo" style="display: flex; align-items: center; gap: 10px; margin: 20px;">
-    <img src="logo.png" alt="NewsX" style="height: 50px;">
-    <h1>News-mani</h1>
-    </div>
-            <ul class="menu-items">
-                <li><a href="/">Home</a></li>
-                <li><a href="#shop">Shop</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i></a></li>
-            </ul>
+        <div class="hamburger-lines" id="hamburgerMenu" tabindex="0" aria-label="Open navigation menu">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
         </div>
+        <div class="logo" style="display: flex; align-items: center; gap: 10px; margin: 20px;">
+            <!-- Simple SVG logo for News-mani -->
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect width="40" height="40" rx="8" fill="#2563eb"/>
+              <text x="20" y="26" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial, sans-serif" fill="#fff" font-weight="bold">NM</text>
+            </svg>
+            <h1 style="color:#2563eb; font-weight:700;">News-mani</h1>
+        </div>
+        <div class="sign-in-up">
+            <a href="signup.html" style="position: absolute; top: 20px; right: 30px;">SIGN UP</a>
+            <a href="signin.html" style="position: absolute; top: 50px; right: 30px;">SIGN IN</a>
+            <a href="signup.html" style="position: absolute; top: 20px; right: 30px;">SIGN UP</a>
+        </div>
+        <ul class="menu-items" id="mainNav">
+            <li><a href="#" id="navHome"><i class="fas fa-home" style="display:none"></i> Home</a></li>
+            <li><a href="#" id="navBlog"><i class="fas fa-newspaper" style="display:none"></i> Blog</a></li>
+            <li><a href="#" id="navContact"><i class="fas fa-envelope" style="display:none"></i> Contact</a></li>
+            <li><a href="#" id="navCart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+        </ul>
     </nav>
        <section id="home">
         <h2 class="visually-hidden">Home Section</h2>
         <div class="home_page">
-            <div class="home_txt">
+            <div class="home_txt tv-screen" style="width: 350px; height: 220px; background: #222; border-radius: 18px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0 auto 24px auto; color: #fff; font-family: 'Segoe UI', Arial, sans-serif;">
                 <p class="collection">HINDUSTAN TIMES</p>
                 <p class="collection">TIMES OF INDIA</p>
                 <p class="collection">INDIAN EXPRESS</p>
-                <p class="collection">THE TELEGRAPH</p>
-                <p>AND MANY MORE... ALSO LOCAL NEWSPAPERS...</p>
+                <p class="collection">FINANCIAL EXPRESS</p>
+                <p class="collection" style="color:#2563eb; font-size:1.2em; font-weight:600;">THE HINDU</p>
+            </div>
+
+              
+          <div class="head container">
+            <div class="head-txt">
+                <p>
+                    Get Newspaper at your doorstep with just one click.
+                    <br>
+                    Stay informed with News-mani  your one-stop platform for accessing the latest national and local newspapers, exclusive magazines, and premium news content. Enjoy seamless delivery, curated offers, and a user-friendly experience designed for every news enthusiast.
+                </p>
+                
             </div>
             <div class="home_label">
                 <p>A specialist domain to order your newspaper. The right time to choose for study. Access the portal. We deliver quality content.</p>
             </div>
-            <label for="search">Search</label>
+            <label for="search-date">Search by Date</label>
+            <input type="date" id="search-date" name="search-date" title="Search by Date">
             <input type="search" id="search" placeholder="Search" name="search" title="Search">
-            <button class="shop-now">Shop Now <i class="fas fa-search"></i></button>
+            <button class="shop-now">SearchNews <i class="fas fa-search"></i></button>
             <div class="home_social_icons">
                 <a href="#"><i class="bx bxl-facebook"></i></a>
                 <a href="#"><i class="bx bxl-twitter"></i></a>
@@ -156,5 +180,48 @@
         </div>
     </section>
 
+    <script>
+    // filepath: c:\Users\User\.vscode\NewsXwebsite\index.html
+
+    // Hamburger menu toggle for mobile
+    const hamburger = document.getElementById('hamburgerMenu');
+    const nav = document.getElementById('mainNav');
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+    hamburger.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') nav.classList.toggle('active');
+    });
+
+    // Navigation functional redirection
+    document.getElementById('navHome').onclick = function(e) {
+        e.preventDefault();
+        window.location.href = '/';
+    };
+    document.getElementById('navBlog').onclick = function(e) {
+        e.preventDefault();
+        window.location.href = 'blog.html';
+    };
+    document.getElementById('navContact').onclick = function(e) {
+        e.preventDefault();
+        document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
+    };
+    document.getElementById('navCart').onclick = function(e) {
+        e.preventDefault();
+        window.location.href = 'cart.html';
+    };
+    </script>
 </body>
+   <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 News-mani. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="bx bxl-facebook"></i></a>
+                <a href="#"><i class="bx bxl-twitter"></i></a>
+                <a href="#"><i class="bx bxl-pinterest"></i></a>
+                <a href="#"><i class="bx bxl-youtube"></i></a>
+                <a href="#"><i class="bx bxl-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
 </html>

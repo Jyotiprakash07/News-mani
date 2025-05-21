@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - News-mani</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .cart-container {
+        max-width: 700px;
+        margin: 2rem auto;
+        background: #f1f5fd;
+        border-radius: 14px;
+        box-shadow: 0 4px 24px rgba(37,99,235,0.07);
+        padding: 2rem;
+      }
+      .cart-title {
+        color: #2563eb;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .cart-list {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 1.5rem;
+      }
+      .cart-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.7rem 0;
+        border-bottom: 1px solid #e5e9f2;
+      }
+      .cart-list li:last-child {
+        border-bottom: none;
+      }
+      .cart-item-title {
+        font-weight: 600;
+        color: #222;
+      }
+      .cart-item-price {
+        color: #2563eb;
+        font-weight: 600;
+      }
+      .remove-btn {
+        background: #d32f2f;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 0.3rem 0.8rem;
+        cursor: pointer;
+        font-size: 0.95rem;
+        margin-left: 1rem;
+        transition: background 0.2s;
+      }
+      .remove-btn:hover {
+        background: #b71c1c;
+      }
+      .cart-total {
+        text-align: right;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #222;
+        margin-bottom: 1.5rem;
+      }
+      .clear-cart-btn {
+        background: #2563eb;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+        display: block;
+        margin: 0 auto;
+      }
+      .clear-cart-btn:hover {
+        background: #1e40af;
+      }
+      .empty-cart {
+        text-align: center;
+        color: #888;
+        margin: 2rem 0;
+      }
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <h2 class="cart-title">Your Cart</h2>
+        <ul class="cart-list" id="cartList">
+          <!-- Cart items will be injected here -->
+        </ul>
+        <div class="cart-total" id="cartTotal"></div>
+        <button class="clear-cart-btn" id="clearCartBtn">Clear Cart</button>
+        <div class="empty-cart" id="emptyCartMsg" style="display:none;">Your cart is empty.</div>
+    </div>
+    <script>
+    // filepath: c:\Users\User\.vscode\NewsXwebsite\cart.html
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart') || '[]');
+    }
+    function setCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    function renderCart() {
+      const cart = getCart();
+      const cartList = document.getElementById('cartList');
+      const cartTotal = document.getElementById('cartTotal');
+      const emptyCartMsg = document.getElementById('emptyCartMsg');
+      cartList.innerHTML = '';
+      let total = 0;
+      if (cart.length === 0) {
+        cartTotal.textContent = '';
+        emptyCartMsg.style.display = 'block';
+        return;
+      }
+      emptyCartMsg.style.display = 'none';
+      cart.forEach((item, idx) => {
+        total += parseFloat(item.price.replace(/[^\d.]/g, '')) || 0;
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <span class="cart-item-title">${item.name}</span>
+          <span class="cart-item-price">${item.price}</span>
+          <button class="remove-btn" data-idx="${idx}">Remove</button>
+        `;
+        cartList.appendChild(li);
+      });
+      cartTotal.textContent = 'Total: ₹' + total.toFixed(2);
+      // Remove item event
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.onclick = function() {
+          const idx = parseInt(this.getAttribute('data-idx'));
+          const cart = getCart();
+          cart.splice(idx, 1);
+          setCart(cart);
+          renderCart();
+        };
+      });
+    }
+    document.getElementById('clearCartBtn').onclick = function() {
+      localStorage.removeItem('cart');
+      renderCart();
+    };
+    renderCart();
+    </script>
+</body>
+</html>

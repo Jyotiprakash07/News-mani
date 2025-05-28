@@ -512,4 +512,8 @@ form button[type="submit"]:hover {
   }
 }
 
+.tv-screen p.collection{
+    color: white;
+}
+
 /* Add hamburger menu JS support (optional, for script.js) */

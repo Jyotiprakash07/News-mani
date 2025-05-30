@@ -1,0 +1,21 @@
+<!doctype html>
+<title>Search News by Date</title>
+<h1>Find News by Date</h1>
+<form method="post">
+    <input type="date" name="search_date" required>
+    <input type="submit" value="Search">
+</form>
+{% if results is defined %}
+    <h2>Results:</h2>
+    <ul>
+        {% for news in results %}
+            <li>
+                <strong>{{ news.title }}</strong> ({{ news.published_at }})<br>
+                {{ news.content[:120] }}...
+            </li>
+        {% else %}
+            <li>No news found for this date.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<a href="{{ index.html }}">Back to Home</a>

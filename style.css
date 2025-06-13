@@ -69,6 +69,28 @@ body {
   top: 0;
   z-index: 100;
 }
+.nav-link {
+  position: relative;
+  overflow: hidden; /* Needed for ripple clipping */
+  z-index: 1;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  background: rgba(37, 99, 235, 0.3); /* Sky blue, translucent */
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
 
 .logo img {
   border-radius: 8px;
@@ -514,6 +536,16 @@ form button[type="submit"]:hover {
 
 .tv-screen p.collection{
     color: white;
+}
+.add-to-cart-btn {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(40,167,69,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+.add-to-cart-btn:hover, .add-to-cart-btn:focus {
+  background-color: #ffc107;
+  color: #1a1a1a;
 }
 
 /* Add hamburger menu JS support (optional, for script.js) */

@@ -64,6 +64,30 @@ document.addEventListener('DOMContentLoaded', function() {    // Add event liste
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
     }
+    // Add this inside your DOMContentLoaded function in script.js
+
+// Add to Cart functionality
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        const product = e.target.closest('.content');
+        if (product) {
+            const productName = product.querySelector('p')?.textContent.trim();
+            const productPrice = product.querySelector('.price')?.textContent.trim();
+
+            if (productName && productPrice) {
+                // Add product to cart
+                cart.push({ name: productName, price: productPrice });
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`${productName} has been added to your cart!`);
+            } else {
+                console.error("Product details missing.");
+            }
+        }
+    });
+});
 
     // Mobile menu toggle (hamburger menu)
     const checkbox = document.getElementById('checkbox');

@@ -11,25 +11,23 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
    
   <link rel="stylesheet" href="style.css">
+<head>
+  ...
   <style>
-    /* Parallax Book Animation */
-    .parallax-book-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 30px auto 0 auto;
-    }
-    .turning-message {
-      color: #2563eb;
-      font-weight: 600;
-      margin-top: 10px;
-    }
+    /* Parallax Book Animation - UPDATED */
     .parallax-book {
       width: 240px;
       height: 160px;
       position: relative;
       perspective: 1200px;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
+
+    .parallax-book:hover {
+      transform: translateY(-10px) scale(1.04);
+      box-shadow: 0 12px 40px rgba(37, 99, 235, 0.25), 0 2px 8px rgba(0,0,0,0.08);
+    }
+
     .parallax-page {
       width: 200px;
       height: 150px;
@@ -42,15 +40,40 @@
       box-shadow: 0 4px 22px rgba(0,0,0,0.12);
       transform-origin: left;
       animation: parallaxTurn 3s infinite alternate;
-      opacity: 0.95;
+      opacity: 0.97;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .page1 { z-index: 3; animation-delay: 0s; }
-    .page2 { z-index: 2; animation-delay: 0.5s; }
-    .page3 { z-index: 1; animation-delay: 1s; }
+
+    .page-content {
+      padding: 20px 12px;
+      text-align: left;
+      color: #174082;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .page1 { z-index: 3; animation-delay: 0s;}
+    .page2 { z-index: 2; animation-delay: 0.5s;}
+    .page3 { z-index: 1; animation-delay: 1s;}
+
     @keyframes parallaxTurn {
       0% { transform: rotateY(0deg) scale(1);}
       100% { transform: rotateY(-120deg) scale(1.04);}
     }
+
+    /* Pause animation on hover for all pages */
+    .parallax-book:hover .parallax-page {
+      animation-play-state: paused !important;
+      box-shadow: 0 4px 32px rgba(37, 99, 235, 0.20);
+      border-color: #2563eb;
+    }
+
+    .parallax-book:hover .parallax-page {
+      background: #f1f4ff;
+    }
+
     .parallax-cover {
       width: 200px;
       height: 150px;
@@ -62,9 +85,9 @@
       z-index: 0;
       box-shadow: 0 8px 32px rgba(0,0,0,0.22);
     }
-    /* Optional: style for section headers */
-    .visually-hidden { display: none; }
   </style>
+  ...
+</head>
 </head>
 <body>
 
@@ -130,12 +153,30 @@
   <section id="home">
     <h2 class="visually-hidden">Home Section</h2>
     <div class="parallax-book-container">
-      <div class="parallax-book">
-        <div class="parallax-page page1"></div>
-        <div class="parallax-page page2"></div>
-        <div class="parallax-page page3"></div>
-        <div class="parallax-cover"></div>
+ <div class="parallax-book-container">
+  <div class="parallax-book">
+    <div class="parallax-page page1">
+      <div class="page-content">
+        <h5>Welcome!</h5>
+        <p>Discover top newspapers and magazines at your doorstep.</p>
       </div>
+    </div>
+    <div class="parallax-page page2">
+      <div class="page-content">
+        <h5>Exclusive Offers</h5>
+        <p>Enjoy premium content and seamless delivery.</p>
+      </div>
+    </div>
+    <div class="parallax-page page3">
+      <div class="page-content">
+        <h5>Join Us</h5>
+        <p>Sign up today to unlock member benefits.</p>
+      </div>
+    </div>
+    <div class="parallax-cover"></div>
+  </div>
+  <div class="turning-message">Turning up the pages...</div>
+</div>
       <div class="turning-message">Turning up the pages...</div>
     </div>
     <div class="head container mt-4">

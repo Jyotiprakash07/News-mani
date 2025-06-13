@@ -1,315 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News-mani</title>
-    <!-- Bootstrap 5.3 CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News-mani</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for cart icon (optional, for professional icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+   
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Parallax Book Animation */
+    .parallax-book-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 30px auto 0 auto;
+    }
+    .turning-message {
+      color: #2563eb;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+    .parallax-book {
+      width: 240px;
+      height: 160px;
+      position: relative;
+      perspective: 1200px;
+    }
+    .parallax-page {
+      width: 200px;
+      height: 150px;
+      background: #fffbe7;
+      border: 1px solid #f1c40f;
+      position: absolute;
+      left: 20px;
+      top: 5px;
+      border-radius: 5px;
+      box-shadow: 0 4px 22px rgba(0,0,0,0.12);
+      transform-origin: left;
+      animation: parallaxTurn 3s infinite alternate;
+      opacity: 0.95;
+    }
+    .page1 { z-index: 3; animation-delay: 0s; }
+    .page2 { z-index: 2; animation-delay: 0.5s; }
+    .page3 { z-index: 1; animation-delay: 1s; }
+    @keyframes parallaxTurn {
+      0% { transform: rotateY(0deg) scale(1);}
+      100% { transform: rotateY(-120deg) scale(1.04);}
+    }
+    .parallax-cover {
+      width: 200px;
+      height: 150px;
+      background: #2563eb;
+      position: absolute;
+      left: 20px;
+      top: 5px;
+      border-radius: 5px;
+      z-index: 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+    }
+    /* Optional: style for section headers */
+    .visually-hidden { display: none; }
+  </style>
 </head>
 <body>
 
-    <section class="top-txt">
-        <h2 class="slide-in">Welcome to News-mani</h2>
-        <style>
-        .slide-in {
-            opacity: 0;
-            transform: translateX(-100px);
-            animation: slideInLeft 1s forwards;
-        }
-        @keyframes slideInLeft {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        </style>
-       
-    </section>
-
-    <nav class="navbar">
-        <div class="hamburger-lines" id="hamburgerMenu" tabindex="0" aria-label="Open navigation menu">
-            <span class="line line1"></span>
-            <span class="line line2"></span>
-            <span class="line line3"></span>
-        </div>
-        <div class="logo" style="display: flex; align-items: center; gap: 10px; margin: 20px;">
-            <!-- Simple SVG logo for News-mani -->
-            <!-- <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <rect width="40" height="40" rx="8" fill="#2563eb"/>
-              <text x="20" y="26" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial, sans-serif" fill="#fff" font-weight="bold">NM</text>
-            </svg> -->
-            <img src="./assets/logo.jpg" alt="logo" width="45px">
-            <h1 style="color:#2563eb; font-weight:700;">News-mani</h1>
-        </div>
-        <div class="sign-in-up">
-            <a href="signup.html" style="position: absolute; top: 20px; right: 30px; color: black;">SIGN UP</a>
-            <a href="signin.html" style="position: absolute; top: 50px; right: 30px; color: black;">SIGN IN</a>
-         </div>
-        <!-- Place this inside your navbar, preferably after .sign-in-up -->
-     <div class="cart-btn-container">
-     <button id="cartBtn" class="cart-btn" aria-label="View Cart">
-    <i class="fas fa-shopping-cart"></i>
-    <span id="cartCount" class="cart-count">0</span>
-    </button>
-         <style>
-             .cart-btn-container {
-  position: absolute;
-  top: 20px;
-  right: 90px; /* Adjust right as needed, so it doesn't overlap SIGN IN/UP */
-  z-index: 100;
-}
-
-.cart-btn {
-  background: #2563eb;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  box-shadow: 0 2px 8px rgba(37,99,235,0.15);
-  cursor: pointer;
-  font-size: 1.5em;
-  transition: background 0.2s;
-}
-
-.cart-btn:hover {
-  background: #1d4ed8;
-}
-
-.cart-count {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  background: #ef4444;
-  color: #fff;
-  border-radius: 50%;
-  padding: 2px 7px;
-  font-size: 0.8em;
-  font-weight: bold;
-}
-</style>
-         <script>
-             // Cart button click event
-document.getElementById('cartBtn').onclick = function() {
-    window.location.href = 'cart.html'; // Or your cart page route
-};
-         </script>
-    </div>
-        <ul class="menu-items" id="mainNav">
-            <li><a href="#" id="navHome"><i class="fas fa-home" style="display:none"></i> Home</a></li>
-            <li><a href="#" id="navBlog"><i class="fas fa-newspaper" style="display:none"></i> Blog</a></li>
-            <li><a href="#" id="navContact"><i class="fas fa-envelope" style="display:none"></i> Contact</a></li>
-            <li><a href="#" id="navCart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+  <!-- Bootstrap Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="./assets/logo.jpg" alt="logo" width="45" class="me-2">
+        <span style="color:#2563eb; font-weight:700;">News-mani</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" id="navHome">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blog.html" id="navBlog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact" id="navContact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link position-relative" href="cart.html" id="navCart">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">0</span>
+              Cart
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="signup.html">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="signin.html">Sign In</a>
+          </li>
         </ul>
-    </nav>
-       <section id="home">
-        <!-- BEGIN Book Animation -->
-<div class="book">
-  <div class="page turn"></div>
-  <div class="page"></div>
-  <div class="page"></div>
-  <div class="book-cover"></div>
-</div>
-<style>
-.book {
-  width: 220px;
-  height: 160px;
-  position: relative;
-  perspective: 600px;
-  margin: 30px auto;
-}
-.page {
-  width: 200px;
-  height: 150px;
-  background: #fffbe7;
-  border: 1px solid #f1c40f;
-  position: absolute;
-  left: 10px;
-  top: 5px;
-  box-shadow: 0 4px 22px rgba(0,0,0,0.12);
-  border-radius: 4px;
-  transition: transform 1.5s cubic-bezier(.59,.01,.53,.98);
-  z-index: 2;
-}
-.page.turn {
-  animation: turnPage 2.2s infinite alternate;
-}
-@keyframes turnPage {
-  0% { transform: rotateY(0deg); z-index: 2; }
-  100% { transform: rotateY(-120deg); z-index: 1;}
-}
-.book-cover {
-  width: 200px;
-  height: 150px;
-  background: #2563eb;
-  position: absolute;
-  left: 10px;
-  top: 5px;
-  border-radius: 4px;
-  z-index: 0;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
-}
-</style>
-<!-- END Book Animation -->
-              
-          <div class="head container">
-            <div class="head-txt">
-                <p>
-                    Get Newspaper at your doorstep with just one click.
-                    <br>
-                    Stay informed with News-mani  your one-stop platform for accessing the latest national and local newspapers, exclusive magazines, and premium news content. Enjoy seamless delivery, curated offers, and a user-friendly experience designed for every news enthusiast.
-                </p>
-                
-            </div>
-            <div class="home_label">
-                <p>A specialist domain to order your newspaper. The right time to choose for study. Access the portal. We deliver quality content.</p>
-            </div>
-            <label for="search-date">Search by Date</label>
-            <input type="date" id="search-date" name="search-date" title="Search by Date">
-            <input type="search" id="search" placeholder="Search" name="search" title="Search">
-            <button class="shop-now">SearchNews <i class="fas fa-search"></i></button>
-            <div class="home_social_icons">
-                <a href="#"><i class="bx bxl-facebook"></i></a>
-                <a href="#"><i class="bx bxl-twitter"></i></a>
-                <a href="#"><i class="bx bxl-pinterest"></i></a>
-                <a href="#"><i class="bx bxl-youtube"></i></a>
-                <a href="#"><i class="bx bxl-instagram"></i></a>
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
+  </nav>
 
-    <section id="seller">
-        <h2 class="visually-hidden">Sellers</h2>
-        <div class="content">
-            <img src="./assets/hindustan_times.jpeg" alt="Hindustan Times Front Page" class="tv-screen" width="150px"/>
-            <p>Hindustan Times</p>
-            <div class="price">₹10</div>
-            <button class="buy-now">BUY NOW</button>
-            <a href="#ReadNow" class="read-now-button">READ NOW</a>
-        </div>
+  <!-- Welcome Section -->
+  <section class="top-txt">
+    <h2 class="slide-in">Welcome to News-mani</h2>
+    <style>
+      .slide-in {
+        opacity: 0;
+        transform: translateX(-100px);
+        animation: slideInLeft 1s forwards;
+      }
+      @keyframes slideInLeft {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </section>
 
-        <div class="content">
-           <img src="./assets/times_of_india.webp" alt="Times of India Front Page" class="tv-screen" width="150px"/>
-            <p>Times Of India</p>
-            <div class="price">₹10</div>
-            <button class="buy-now">BUY NOW</button>
-            <a href="#ReadNow" class="read-now-button">READ NOW</a>
-        </div>
+  <!-- Main Parallax Book Animation Section -->
+  <section id="home">
+    <h2 class="visually-hidden">Home Section</h2>
+    <div class="parallax-book-container">
+      <div class="parallax-book">
+        <div class="parallax-page page1"></div>
+        <div class="parallax-page page2"></div>
+        <div class="parallax-page page3"></div>
+        <div class="parallax-cover"></div>
+      </div>
+      <div class="turning-message">Turning up the pages...</div>
+    </div>
+    <div class="head container mt-4">
+      <div class="head-txt">
+        <p>
+          Get Newspaper at your doorstep with just one click.
+          <br>
+          Stay informed with News-mani – your one-stop platform for accessing the latest national and local newspapers, exclusive magazines, and premium news content. Enjoy seamless delivery, flexible plans, and more.
+        </p>
+      </div>
+      <div class="home_label">
+        <p>A specialist domain to order your newspaper. The right time to choose for study. Access the portal. We deliver quality content.</p>
+      </div>
+      <label for="search-date">Search by Date</label>
+      <input type="date" id="search-date" name="search-date" title="Search by Date" class="form-control mb-2" style="max-width:200px;">
+      <input type="search" id="search" placeholder="Search" name="search" title="Search" class="form-control mb-2" style="max-width:200px;">
+      <button class="btn btn-primary">SearchNews <i class="fas fa-search"></i></button>
+      <div class="home_social_icons mt-3">
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-pinterest"></i></a>
+        <a href="#"><i class="bx bxl-youtube"></i></a>
+        <a href="#"><i class="bx bxl-instagram"></i></a>
+      </div>
+    </div>
+  </section>
 
-        <div class="content">
-            <img src="./assets/indian_express.jpeg" alt="Indian Express Front Page" class="tv-screen" width="150px"/>
-            <p>Indian Express</p>
-            <div class="price">₹10</div>
-            <button class="buy-now">BUY NOW</button>
-            <a href="#ReadNow" class="read-now-button">READ NOW</a>
-        </div>
+  <!-- Seller Section -->
+  <section id="seller">
+    <h2 class="visually-hidden">Sellers</h2>
+    <div class="content">
+      <img src="./assets/hindustan_times.jpeg" alt="Hindustan Times Front Page" class="tv-screen" width="150px"/>
+      <p>Hindustan Times</p>
+      <div class="price">₹10</div>
+      <button class="buy-now btn btn-success">BUY NOW</button>
+      <a href="#ReadNow" class="read-now-button btn btn-outline-primary">READ NOW</a>
+    </div>
+    <div class="content">
+      <img src="./assets/times_of_india.webp" alt="Times of India Front Page" class="tv-screen" width="150px"/>
+      <p>Times Of India</p>
+      <div class="price">₹10</div>
+      <button class="buy-now btn btn-success">BUY NOW</button>
+      <a href="#ReadNow" class="read-now-button btn btn-outline-primary">READ NOW</a>
+    </div>
+    <div class="content">
+      <img src="./assets/indian_express.jpeg" alt="Indian Express Front Page" class="tv-screen" width="150px"/>
+      <p>Indian Express</p>
+      <div class="price">₹10</div>
+      <button class="buy-now btn btn-success">BUY NOW</button>
+      <a href="#ReadNow" class="read-now-button btn btn-outline-primary">READ NOW</a>
+    </div>
+    <div class="content">
+      <img src="./assets/financial_express.jpeg" alt="Financial Express Front Page" class="tv-screen" width="150px"/>
+      <p>Financial Express</p>
+      <div class="price">₹10</div>
+      <button class="buy-now btn btn-success">BUY NOW</button>
+      <a href="#ReadNow" class="read-now-button btn btn-outline-primary">READ NOW</a>
+    </div>
+    <div class="content">
+      <img src="./assets/the_hindu.jpeg" alt="The Hindu Front Page" class="tv-screen" width="150px"/>
+      <p>The Hindu</p>
+      <div class="price">₹10</div>
+      <button class="buy-now btn btn-success">BUY NOW</button>
+      <a href="#ReadNow" class="read-now-button btn btn-outline-primary">READ NOW</a>
+    </div>
+  </section>
 
-        <div class="content">
-            <img src="./assets/financial_express.jpeg" alt="Financial Express Front Page" class="tv-screen" width="150px"/>
-            <p>Financial Express</p>
-            <div class="price">₹10</div>
-            <button class="buy-now">BUY NOW</button>
-            <a href="#ReadNow" class="read-now-button">READ NOW</a>
-        </div>
-         <div class="content">
-           <img src="./assets/the_hindu.jpeg" alt="The Hindu Front Page" class="tv-screen" width="150px"/>
-             <p>The Hindu</p>
-            <div class="price">₹10</div>
-            <button class="buy-now">BUY NOW</button>
-            <a href="#ReadNow" class="read-now-button">READ NOW</a>
-        </div>
-    </section>
+  <!-- Shop Section -->
+  <section id="shop">
+    <h2 style="text-align: center;">Our Offers</h2>
+    <div class="shop-grid row justify-content-center">
+      <div class="shop-item col-md-3 m-3 text-center">
+        <img src="./assets/magazine.jpeg" alt="magazine" width="150px">
+        <h3>TIMES NOW MAGAZINE</h3>
+        <p>Short product description.</p>
+        <div class="price">₹199</div>
+        <button class="buy-now btn btn-success">Buy Now</button>
+      </div>
+      <div class="shop-item col-md-3 m-3 text-center">
+        <img src="./assets/magazine_2.webp" alt="magazine_2" width="150px">
+        <h3>PREMIUM MEMBERSHIP</h3>
+        <p>Another great OFFER just for you. You can access all the news and magazine for free for one month and no delivery charge for six months.</p>
+        <div class="price">₹999</div>
+        <button class="buy-now btn btn-success">Buy Now</button>
+      </div>
+    </div>
+  </section>
 
-   <!-- Shop Section -->
-   <section id="shop">
-     <h2 style="text-align: center;">Our Offers</h2>
-     <div class="shop-grid">
-       <div class="shop-item">
-         <img src="./assets/magazine.jpeg" alt="magazine" width="150px">
-         <h3>TIMES NOW MAGAZINE</h3>
-         <p>Short product description.</p>
-         <div class="price">₹199</div>
-         <button class="buy-now">Buy Now</button>
-       </div>
-       <div class="shop-item">
-         <img src="./assets/magazine_2.webp" alt="magazine_2" width="150px">
-         <h3>PREMIUM MEMBERSHIP</h3>
-         <p>Another great OFFER just for you.You can access all the news and magazine for free for one month and no delivery charge for six months.</p>
-         <div class="price">₹999</div>
-         <button class="buy-now">Buy Now</button>
-       </div>
-     </div>
-   </section>
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="form">
+      <div class="form-txt">
+        <h4>Information</h4>
+        <h2>Contact Us</h2>
+        <p>As you might expect from a company that began as a high-end interiors contractor, we pay strict attention.</p>
+        <h3>INDIA</h3>
+      </div>
+      <form>
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="Your Name" required title="Your Name" class="form-control mb-2">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" placeholder="Your Email" required title="Your Email" class="form-control mb-2">
+        <label for="message">Your Message</label>
+        <textarea id="message" placeholder="Your Message" required title="Your Message" class="form-control mb-2"></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
 
-    <section id="contact">
-        <div class="form">
-            <div class="form-txt">
-                <h4>Information</h4>
-                <h2>Contact Us</h2>
-                <p>As you might expect from a company that began as a high-end interiors contractor, we pay strict attention.</p>
-                <h3>INDIA</h3>
-            </div>
-            <form>
-                <label for="name">Your Name</label>
-                <input type="text" id="name" placeholder="Your Name" required title="Your Name">
-                <label for="email">Your Email</label>
-                <input type="email" id="email" placeholder="Your Email" required title="Your Email">
-                <label for="message">Your Message</label>
-                <textarea id="message" placeholder="Your Message" required title="Your Message"></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </section>
+  <footer class="bg-light py-3 mt-5">
+    <div class="footer-content text-center">
+      <p>&copy; 2025 News-mani. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-pinterest"></i></a>
+        <a href="#"><i class="bx bxl-youtube"></i></a>
+        <a href="#"><i class="bx bxl-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
 
-    <script>
-    // filepath: c:\Users\User\.vscode\NewsXwebsite\index.html
-
-    // Hamburger menu toggle for mobile
-    const hamburger = document.getElementById('hamburgerMenu');
-    const nav = document.getElementById('mainNav');
-    hamburger.addEventListener('click', () => {
-        nav.classList.toggle('active');
+  <!-- Bootstrap JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Font Awesome JS (optional for icons) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <!-- Custom JS for cart badge demo -->
+  <script>
+    // Example: set cart count (replace with your dynamic logic)
+    document.getElementById('cartCount').textContent = localStorage.getItem('cartCount') || '0';
+    // Optionally, add JS for "Buy Now" buttons to update cartCount
+    document.querySelectorAll('.buy-now').forEach(btn => {
+      btn.addEventListener('click', function() {
+        let cnt = Number(localStorage.getItem('cartCount') || 0) + 1;
+        localStorage.setItem('cartCount', cnt);
+        document.getElementById('cartCount').textContent = cnt;
+      });
     });
-    hamburger.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') nav.classList.toggle('active');
-    });
-
-    // Navigation functional redirection
-    document.getElementById('navHome').onclick = function(e) {
-        e.preventDefault();
-        window.location.href = '/';
-    };
-    document.getElementById('navBlog').onclick = function(e) {
-        e.preventDefault();
-        window.location.href = 'blog.html';
-    };
-    document.getElementById('navContact').onclick = function(e) {
-        e.preventDefault();
-        document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
-    };
-    document.getElementById('navCart').onclick = function(e) {
-        e.preventDefault();
-        window.location.href = 'cart.html';
-    };
-    </script>
+  </script>
 </body>
-   <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 News-mani. All rights reserved.</p>
-            <div class="social-icons">
-                <a href="#"><i class="bx bxl-facebook"></i></a>
-                <a href="#"><i class="bx bxl-twitter"></i></a>
-                <a href="#"><i class="bx bxl-pinterest"></i></a>
-                <a href="#"><i class="bx bxl-youtube"></i></a>
-                <a href="#"><i class="bx bxl-instagram"></i></a>
-            </div>
-        </div>
-    </footer>
 </html>

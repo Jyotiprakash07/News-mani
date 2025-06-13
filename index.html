@@ -85,9 +85,29 @@
       z-index: 0;
       box-shadow: 0 8px 32px rgba(0,0,0,0.22);
     }
+    /* Add to your <style> tag in the <head> */
+.parallax-book-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  /* Optional: for full viewport height, use 100vh */
+}
+
+.parallax-book {
+  width: 420px;    /* was 240px */
+  height: 320px;   /* was 160px */
+}
+.parallax-page,
+.parallax-cover {
+  width: 370px;    /* was 200px */
+  height: 300px;   /* was 150px */
+  left: 25px;      /* adjust according to visual centering */
+  top: 10px;
+  border-radius: 12px;
+}
   </style>
   ...
-</head>
 </head>
 <body>
 
@@ -152,8 +172,8 @@
   <!-- Main Parallax Book Animation Section -->
   <section id="home">
     <h2 class="visually-hidden">Home Section</h2>
-    <div class="parallax-book-container">
- <div class="parallax-book-container">
+    <!-- Centered and Enlarged Book Animation -->
+<div class="parallax-book-center">
   <div class="parallax-book">
     <div class="parallax-page page1">
       <div class="page-content">
@@ -161,6 +181,22 @@
         <p>Discover top newspapers and magazines at your doorstep.</p>
       </div>
     </div>
+    <div class="parallax-page page2">
+      <div class="page-content">
+        <h5>Exclusive Offers</h5>
+        <p>Enjoy premium content and seamless delivery.</p>
+      </div>
+    </div>
+    <div class="parallax-page page3">
+      <div class="page-content">
+        <h5>Join Us</h5>
+        <p>Sign up today to unlock member benefits.</p>
+      </div>
+    </div>
+    <div class="parallax-cover"></div>
+  </div>
+</div>
+<div class="turning-message" style="text-align:center;">Turning up the pages...</div>
     <div class="parallax-page page2">
       <div class="page-content">
         <h5>Exclusive Offers</h5>

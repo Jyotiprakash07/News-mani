@@ -315,6 +315,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
   <!-- Custom JS for cart badge demo -->
   <script>
+    
+document.querySelectorAll('.nav-link').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    const rect = btn.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+    ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+    btn.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600); // Remove after animation
+  
     // Example: set cart count (replace with your dynamic logic)
     document.getElementById('cartCount').textContent = localStorage.getItem('cartCount') || '0';
     // Optionally, add JS for "Buy Now" buttons to update cartCount

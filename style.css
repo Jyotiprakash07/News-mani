@@ -61,20 +61,22 @@ body {
 }
 
 /* Navbar */
-.navbar {
-  background: #fff;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  padding: 0.5rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.nav-link {
-  position: relative;
-  overflow: hidden; /* Needed for ripple clipping */
-  z-index: 1;
+.nav-btn, .nav-link {
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  cursor: pointer;
 }
 
+.nav-btn:hover, .nav-link:hover {
+  background: #ffe066; /* highlight color */
+  color: #222;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 2px 8px #f1c40f44;
+}
+
+.nav-btn:active, .nav-link:active {
+  background: #ffd700;
+  transform: scale(0.98);
+}
 .ripple {
   position: absolute;
   border-radius: 50%;

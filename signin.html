@@ -2,32 +2,140 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sign In - NewsX</title>
+  <title>Sign In - News-mani</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS and icon libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #f8f9fa;
+    }
+    .signin-container {
+      max-width: 400px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 2rem 2.5rem 2rem 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .signin-container h2 {
+      color: #2563eb;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .form-control:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 0.2rem rgba(37,99,235,0.15);
+    }
+    .btn-primary {
+      background-color: #2563eb;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #1748b3;
+    }
+    .text-center a {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+    @media (max-width: 500px) {
+      .signin-container {
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <form id="signinForm">
+  <!-- Navbar (copy from index.html) -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="./assets/logo.jpg" alt="logo" width="45" class="me-2">
+        <span style="color:#2563eb; font-weight:700;">News-mani</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item">
+            <a class="nav-link position-relative" href="cart.html">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">0</span>
+              Cart
+            </a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="signin.html">Sign In</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sign In Form -->
+  <div class="signin-container shadow">
     <h2>Sign In</h2>
-    <label for="signin-email">Email</label>
-    <input type="email" id="signin-email" required>
-    <label for="signin-password">Password</label>
-    <input type="password" id="signin-password" required>
-    <button type="submit">Sign In</button>
-  </form>
+    <form id="signinForm">
+      <div class="mb-3">
+        <label for="signin-email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="signin-email" placeholder="Enter your email" required>
+      </div>
+      <div class="mb-3">
+        <label for="signin-password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="signin-password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Sign In</button>
+    </form>
+    <div class="text-center mt-3">
+      <small>Don't have an account? <a href="signup.html">Sign Up</a></small>
+    </div>
+  </div>
+
+  <!-- Footer (copy from index.html) -->
+  <footer class="bg-light py-3 mt-5">
+    <div class="footer-content text-center">
+      <p>&copy; 2025 News-mani. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-pinterest"></i></a>
+        <a href="#"><i class="bx bxl-youtube"></i></a>
+        <a href="#"><i class="bx bxl-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS & FontAwesome -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
   <script>
+    // Cart badge update
+    document.getElementById('cartCount').textContent = localStorage.getItem('cartCount') || '0';
+
+    // Sign In Logic
     document.getElementById('signinForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const email = document.getElementById('signin-email').value;
-  const password = document.getElementById('signin-password').value;
-  const user = JSON.parse(localStorage.getItem('user'));
-  if (user && user.email === email && user.password === password) {
-    alert('Sign in successful!');
-    // Redirect or update UI as needed
-    window.location.href = 'index.html';
-  } else {
-    alert('Invalid email or password.');
-  }
-});
+      e.preventDefault();
+      const email = document.getElementById('signin-email').value.trim();
+      const password = document.getElementById('signin-password').value;
+
+      // Retrieve user from localStorage
+      const user = JSON.parse(localStorage.getItem('user'));
+
+      if (user && user.email === email && user.password === password) {
+        alert('Sign in successful!');
+        window.location.href = 'index.html';
+      } else {
+        alert('Invalid email or password.');
+      }
+    });
   </script>
 </body>
 </html>

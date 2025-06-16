@@ -13,7 +13,7 @@ users = {
 def index():
     return render_template('index.html')
 
-@app.route('/signin', methods=['POST'])
+@app.route('/signin', methods=['GET''POST'])
 def signin():
     data = request.get_json()
     username = data.get('username')

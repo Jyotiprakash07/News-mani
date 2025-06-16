@@ -3,26 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newsmani</title>
+    <title>News-mani Blog</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
     <style>
-      /* Simple styling for articles */
-      #science-articles {
-        margin: 2rem auto;
+      body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: #f4f8fb;
+        margin: 0;
+        color: #222;
+      }
+      .navbar {
+        background: #fff;
+        box-shadow: 0 2px 8px #2563eb14;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+        height: 70px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .menu-items {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .menu-items li a {
+        color: #2563eb;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+      }
+      .menu-items li a:hover {
+        text-decoration: underline;
+      }
+      .blog-container {
         max-width: 800px;
-        background: #f1f5fd;
+        margin: 3rem auto 2rem auto;
+        background: #fff;
         border-radius: 14px;
         box-shadow: 0 4px 24px rgba(37,99,235,0.07);
-        padding: 2rem;
+        padding: 2.5rem 2rem;
       }
-      #science-articles h2 {
+      .blog-container h1 {
         color: #2563eb;
-        margin-bottom: 1rem;
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+      }
+      .blog-container .intro {
+        color: #444;
+        font-size: 1.13rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+      .blog-container article {
+        margin-bottom: 2.5rem;
+        border-bottom: 1px solid #e5e9f2;
+        padding-bottom: 2rem;
+      }
+      .blog-container article:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .blog-container h2 {
+        color: #2563eb;
+        font-size: 1.35rem;
+        margin-bottom: 0.7rem;
+      }
+      .blog-container p {
+        color: #333;
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+      #science-articles {
+        margin-top: 2.5rem;
       }
       .article-list {
         list-style: none;
         padding: 0;
+        margin: 0;
       }
       .article-list li {
         margin-bottom: 1.5rem;
@@ -33,7 +97,7 @@
         border-bottom: none;
       }
       .article-title {
-        font-size: 1.1rem;
+        font-size: 1.04rem;
         font-weight: 600;
         color: #222;
       }
@@ -49,11 +113,9 @@
     </style>
 </head>
 <body>
-
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo" style="display: flex; align-items: center; gap: 10px; margin: 20px;">
-            <!-- Simple SVG logo for News-mani -->
+        <div class="logo">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
               <rect width="40" height="40" rx="8" fill="#2563eb"/>
               <text x="20" y="26" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial, sans-serif" fill="#fff" font-weight="bold">NM</text>
@@ -68,42 +130,33 @@
         </ul>
     </nav>
 
-    <!-- Blog Content -->
-    <section id="blog">
-        <h1>Latest News & Articles</h1>
-        <article>
-            <h2>The Importance of Reading Newspapers</h2>
-            <p>Newspapers keep you informed, enhance your knowledge, and sharpen your critical thinking skills.</p>
-        </article>
-        <div style="display:flex; gap:2rem; flex-wrap:wrap; margin-top:2rem;">
-            <div style="text-align:center;">
-                <img src="https://images.hindustantimes.com/images/app-images/2021/7/epaper-ht.jpg" alt="Hindustan Times" style="width:180px; border-radius:8px; box-shadow:0 2px 8px #2563eb22;">
-                <div>Hindustan Times</div>
-            </div>
-            <div style="text-align:center;">
-                <img src="https://static.toiimg.com/photo/90384221.cms" alt="Times of India" style="width:180px; border-radius:8px; box-shadow:0 2px 8px #2563eb22;">
-                <div>Times of India</div>
-            </div>
-            <div style="text-align:center;">
-                <img src="https://images.indianexpress.com/2023/11/indian-express-epaper.jpg" alt="Indian Express" style="width:180px; border-radius:8px; box-shadow:0 2px 8px #2563eb22;">
-                <div>Indian Express</div>
-            </div>
-            <div style="text-align:center;">
-                <img src="https://assets.thehindu.com/2023/10/01/images/thehindu-epaper.jpg" alt="The Hindu" style="width:180px; border-radius:8px; box-shadow:0 2px 8px #2563eb22;">
-                <div>The Hindu</div>
-            </div>
+    <div class="blog-container">
+        <h1>Insights & Stories</h1>
+        <div class="intro">
+            Welcome to the News-mani blog – your destination for insightful articles, updates, and original perspectives from the world of news, science, and society. Here, we focus on delivering quality content that informs and inspires our readers.
         </div>
-    </section>
+        <article>
+            <h2>The Power of Staying Informed</h2>
+            <p>
+                In today's rapidly evolving world, staying informed is more crucial than ever. Reading credible news not only broadens your perspective but also empowers you to make better decisions. At News-mani, we believe in responsible journalism and the impact it has on society.
+            </p>
+        </article>
+        <article>
+            <h2>Why Science Reporting Matters</h2>
+            <p>
+                Science shapes our future – from health and technology to the environment. Our blog features handpicked scientific articles, helping you stay updated with breakthroughs and discoveries that matter. Explore the world with a critical and curious mind!
+            </p>
+        </article>
 
-    <section id="science-articles">
-      <h2>Latest Scientific Articles</h2>
-      <ul class="article-list" id="articlesList">
-        <li>Loading scientific articles...</li>
-      </ul>
-    </section>
+        <section id="science-articles">
+          <h2>Latest Scientific Articles</h2>
+          <ul class="article-list" id="articlesList">
+            <li>Loading scientific articles...</li>
+          </ul>
+        </section>
+    </div>
 
     <script>
-    // filepath: c:\Users\User\.vscode\NewsXwebsite\blog.html
     // Replace with your actual NewsAPI key
     const API_KEY = 'YOUR_API_KEY';
     const articlesList = document.getElementById('articlesList');

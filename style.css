@@ -1,6 +1,6 @@
-/* ===== Headline Animation Styles for style.css ===== */
+/* ===== UIDesign Store Inspired Landing Page Styles ===== */
 
-/* Global Background and Font - (Keep your existing global styles in style.css) */
+/* Global Background and Font */
 body {
   background: linear-gradient(135deg, #e0e7ff 0%, #f5f7fa 100%);
   min-height: 100vh;
@@ -8,7 +8,7 @@ body {
   color: #222;
 }
 
-/* Navbar Brand Accent - (Keep your existing navbar styles) */
+/* Navbar Brand Accent */
 .navbar-brand span {
   color: #2563eb !important;
   font-weight: 800;
@@ -18,73 +18,58 @@ body {
   box-shadow: 0 4px 24px rgba(37,99,235,0.06);
 }
 
-/* Headline Animation (No overlap, flicker-proof) */
+/* Headline Animation (no overlap, flicker-proof) */
 .headlines-container {
   position: relative;
-  height: 80px; /* Adjust height to fit your largest headline comfortably */
+  height: 80px;
   margin-bottom: 40px;
-  background: #fff; /* Changed from #f8f9fa to #fff for consistency with other cards */
-  border-radius: 18px; /* Consistent with other cards */
-  box-shadow: 0 8px 32px rgba(99,102,241,0.10), 0 1.5px 4px rgba(37,99,235,0.06); /* Consistent shadow */
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(99,102,241,0.10), 0 1.5px 4px rgba(37,99,235,0.06);
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Crucial for hiding parts of headlines outside the container */
-  padding: 0 10px; /* Adjusted padding */
+  overflow: hidden;
+  padding: 0 10px;
 }
 
 .headline-item {
-  position: absolute; /* Crucial for layering headlines */
-  width: 100%; /* Ensure it takes full width of container */
-  left: 0; /* Align to the left */
-  top: 50%; /* Center vertically */
-  transform: translateY(-50px); /* Start slightly off-screen for a subtle slide-in */
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   text-align: center;
   font-size: 2.3rem;
   font-weight: 800;
   color: #2563eb;
-
-  /* Animation properties */
   opacity: 0;
-  visibility: hidden; /* Hide when not active */
-  pointer-events: none; /* Prevents interaction with hidden elements */
-  animation: fadeSlideHeadline 12s infinite ease-in-out; /* Total animation duration */
+  visibility: hidden;
+  pointer-events: none;
+  animation: fadeHeadline 12s infinite;
 }
 
-/* Animation delays for each headline */
 .headline-item:nth-child(1) { animation-delay: 0s; }
 .headline-item:nth-child(2) { animation-delay: 4s; }
 .headline-item:nth-child(3) { animation-delay: 8s; }
 
-@keyframes fadeSlideHeadline {
-  0%, 5% {
-    opacity: 0;
-    transform: translateY(20px); /* Start slightly below */
-    visibility: hidden;
-  }
-  15%, 85% {
-    opacity: 1;
-    transform: translateY(-50%); /* Visible and centered */
-    visibility: visible;
-  }
-  95%, 100% {
-    opacity: 0;
-    transform: translateY(-120%); /* Slide up and out */
-    visibility: hidden;
-  }
+@keyframes fadeHeadline {
+  0%, 32%   { opacity: 0; visibility: hidden; }
+  33%, 90%  { opacity: 1; visibility: visible; }
+  91%, 100% { opacity: 0; visibility: hidden; }
 }
 
 /* Responsive for Headline */
 @media (max-width: 768px) {
-  .headline-item { font-size: 1.8rem; }
+  .headline-item { font-size: 1.5rem; }
   .headlines-container { height: 55px; }
 }
-@media (max-width: 500px) { /* Changed from 576px to 500px to match your original smaller breakpoint */
-  .headline-item { font-size: 1.1rem; } /* Original font size for very small screens */
+@media (max-width: 500px) {
+  .headline-item { font-size: 1.1rem; }
   .headlines-container { height: 38px; }
 }
 
-/* Card-style content blocks - (Keep your existing card styles) */
+/* Card-style content blocks */
 .content, .shop-item {
   background: #fff;
   border-radius: 18px;
@@ -98,7 +83,7 @@ body {
   transform: translateY(-4px) scale(1.025);
 }
 
-/* Titles and prices - (Keep your existing title and price styles) */
+/* Titles and prices */
 .content p, .shop-item h3 {
   font-weight: 700;
   color: #2563eb;
@@ -111,7 +96,7 @@ body {
   margin-bottom: 0.7rem;
 }
 
-/* Read Now Button - vibrant, pill-shaped - (Keep your existing button styles) */
+/* Read Now Button - vibrant, pill-shaped */
 .read-now-button {
   background: linear-gradient(90deg, #6366f1 0%, #2563eb 100%);
   color: #fff !important;
@@ -135,7 +120,7 @@ body {
   outline: none;
 }
 
-/* Buy Now and Add to Cart buttons - consistent style - (Keep your existing button styles) */
+/* Buy Now and Add to Cart buttons - consistent style */
 .buy-now {
   border-radius: 999px !important;
   font-weight: 700;
@@ -153,7 +138,7 @@ body {
   transition: box-shadow 0.18s, transform 0.14s;
 }
 
-/* Home Social Icons - (Keep your existing social icon styles) */
+/* Home Social Icons */
 .home_social_icons a {
   color: #2563eb;
   font-size: 1.4rem;
@@ -164,7 +149,7 @@ body {
   color: #6366f1;
 }
 
-/* Form styling - (Keep your existing form styles) */
+/* Form styling */
 .form {
   background: #fff;
   border-radius: 18px;
@@ -174,7 +159,7 @@ body {
   max-width: 700px;
 }
 
-/* Footer - (Keep your existing footer styles) */
+/* Footer */
 footer.bg-light {
   box-shadow: 0 -2px 16px rgba(37,99,235,0.04);
   border-radius: 18px 18px 0 0;
@@ -194,7 +179,7 @@ footer.bg-light {
   color: #6366f1;
 }
 
-/* Visually Hidden for Accessibility - (Keep this) */
+/* Visually Hidden for Accessibility */
 .visually-hidden {
   position: absolute !important;
   height: 1px; width: 1px;
@@ -203,24 +188,11 @@ footer.bg-light {
   white-space: nowrap;
 }
 
-/* Responsive adjustments - (Keep your existing responsive adjustments) */
+/* Responsive adjustments */
 @media (max-width: 900px) {
   .form, .content, .shop-item { padding: 1.1rem 0.7rem 1rem 0.7rem; }
 }
 @media (max-width: 600px) {
   .form { padding: 1.1rem 0.3rem; }
   .content, .shop-item { padding: 1rem 0.3rem; }
-}
-
-/* Existing slide-in animation from your HTML style block (Add this if it's not already in your style.css) */
-.slide-in {
-  opacity: 0;
-  transform: translateX(-100px);
-  animation: slideInLeft 1s forwards;
-}
-@keyframes slideInLeft {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }

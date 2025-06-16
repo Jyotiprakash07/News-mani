@@ -20,7 +20,7 @@ def signin():
     password = data.get('password')
 
     if username in users and check_password_hash(users[username], password):
-        return jsonify(success=True)
+        return render_template('index.html')
     else:
         return jsonify(success=False, message='Invalid username or password.')
 class News(db.Model):

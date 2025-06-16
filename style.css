@@ -53,9 +53,8 @@ body {
 .headline-item:nth-child(3) { animation-delay: 8s; }
 
 @keyframes fadeHeadline {
-  0%, 100% { opacity: 0; }
-  5%, 32% { opacity: 1; }
-  33%, 100% { opacity: 0; }
+  0%, 30%, 100% { opacity: 0; }
+  5%, 25% { opacity: 1; }
 }
 
 /* Responsive for Headline */

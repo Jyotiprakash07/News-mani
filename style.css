@@ -18,7 +18,7 @@ body {
   box-shadow: 0 4px 24px rgba(37,99,235,0.06);
 }
 
-/* Headline Animation (no overlap, smooth transitions) */
+/* Headline Animation (Fixed: no overlap, one visible at a time) */
 .headlines-container {
   position: relative;
   height: 80px;
@@ -44,17 +44,29 @@ body {
   font-weight: 800;
   color: #2563eb;
   opacity: 0;
+  animation: fadeHeadline 12s infinite ease-in-out;
   pointer-events: none;
-  animation: fadeHeadline 12s infinite;
 }
 
-.headline-item:nth-child(1) { animation-delay: 0s; }
-.headline-item:nth-child(2) { animation-delay: 4s; }
-.headline-item:nth-child(3) { animation-delay: 8s; }
+.headline-item:nth-child(1) {
+  animation-delay: 0s;
+  z-index: 3;
+}
+.headline-item:nth-child(2) {
+  animation-delay: 4s;
+  z-index: 2;
+}
+.headline-item:nth-child(3) {
+  animation-delay: 8s;
+  z-index: 1;
+}
 
 @keyframes fadeHeadline {
-  0%, 30%, 100% { opacity: 0; }
-  5%, 25% { opacity: 1; }
+  0%   { opacity: 0; }
+  5%   { opacity: 1; }
+  30%  { opacity: 1; }
+  35%  { opacity: 0; }
+  100% { opacity: 0; }
 }
 
 /* Responsive for Headline */

@@ -3,302 +3,203 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News-mani</title>
+  <meta name="description" content="News-mani delivers newspapers, magazines, and premium news subscriptions to your doorstep.">
+  <title>News-mani | Newspaper Delivery & Digital Reading</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-   
   <link rel="stylesheet" href="style.css">
-<head>
-  
-  <style>
-    /* Parallax Book Animation - REMOVED */
-    /* All .parallax-related styles are removed */
-
-    /* New Fading Headlines Animation Styles */
-    .headlines-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 40vh; /* Adjust height as needed */
-      margin-top: 40px;
-      margin-bottom: 40px;
-      background-color: #f8f9fa; /* Light background for contrast */
-      padding: 30px 20px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .headline-item {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #2563eb;
-      position: absolute;
-      opacity: 0;
-      animation: fadeCycle 12s infinite ease-in-out; /* Total animation duration */
-      text-align: center;
-      padding: 0 20px;
-    }
-
-    /* Animation delays for each headline */
-    .headline-item:nth-child(1) { animation-delay: 0s; }
-    .headline-item:nth-child(2) { animation-delay: 4s; }
-    .headline-item:nth-child(3) { animation-delay: 8s; }
-
-    @keyframes fadeCycle {
-      0%, 100% { opacity: 0; transform: translateY(20px); }
-      10%, 90% { opacity: 1; transform: translateY(0); }
-      30%, 70% { opacity: 1; transform: translateY(0); }
-      35%, 65% { opacity: 0; transform: translateY(-20px); }
-    }
-
-    /* Ensure responsiveness for smaller screens */
-    @media (max-width: 768px) {
-      .headline-item {
-        font-size: 1.8rem;
-      }
-    }
-    @media (max-width: 576px) {
-      .headline-item {
-        font-size: 1.5rem;
-      }
-    }
-
-    .slide-in {
-      opacity: 0;
-      transform: translateX(-100px);
-      animation: slideInLeft 1s forwards;
-    }
-    @keyframes slideInLeft {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-  </style>
-  ...
+  <script src="script.js" defer></script>
 </head>
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" aria-label="Primary navigation">
     <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img src="./assets/logo.jpg" alt="logo" width="45" class="me-2">
-        <span style="color:#2563eb; font-weight:700;">News-mani</span>
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html" aria-label="News-mani home">
+        <img src="./assets/logo.jpg" alt="News-mani logo" class="brand-logo">
+        <span>News-mani</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav mb-2 mb-lg-0">
+        <ul class="navbar-nav align-items-lg-center mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html" id="navHome">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="blog.html" id="navBlog">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact" id="navContact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link position-relative" href="cart.html" id="navCart">
-              <i class="fas fa-shopping-cart"></i>
+            <a class="nav-link position-relative" href="cart.html">
+              <i class="fas fa-shopping-cart" aria-hidden="true"></i>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">0</span>
               Cart
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="signup.html">Sign Up</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="signin.html">Sign In</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
+          <li class="nav-item"><a class="nav-link" href="signin.html">Sign In</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <section class="top-txt">
-    <h2 class="slide-in">Welcome to News-mani</h2>
-  </section>
+  <main>
+    <section class="top-txt" aria-labelledby="welcome-title">
+      <h1 id="welcome-title" class="slide-in">Welcome to News-mani</h1>
+    </section>
 
-  <section id="home">
-    <h2 class="visually-hidden">Home Section</h2>
-    <div class="headlines-container">
-      <div class="headline-item">Stay Updated, Instantly!</div>
-      <div class="headline-item">Your Daily Dose of Knowledge.</div>
-      <div class="headline-item">Bringing the World to Your Doorstep.</div>
-    </div>
+    <section id="home" aria-labelledby="home-heading">
+      <h2 id="home-heading" class="visually-hidden">Home Section</h2>
+      <div class="headlines-container" aria-label="News-mani highlights">
+        <p class="headline-item">Stay Updated, Instantly!</p>
+        <p class="headline-item">Your Daily Dose of Knowledge.</p>
+        <p class="headline-item">Bringing the World to Your Doorstep.</p>
+      </div>
 
-    <div class="head container mt-4">
-      <div class="head-txt">
-        <p>
-          Get Newspaper at your doorstep with just one click.
-          <br>
-          Stay informed with News-mani – your one-stop platform for accessing the latest national and local newspapers, exclusive magazines, and premium news content. Enjoy seamless delivery, flexible plans, and more.
-        </p>
-      </div>
-      <div class="home_label">
-        <p>A specialist domain to order your newspaper. The right time to choose for study. Access the portal. We deliver quality content.</p>
-      </div>
-      <label for="search-date">Search by Date</label>
-      <input type="date" id="search-date" name="search-date" title="Search by Date" class="form-control mb-2" style="max-width:200px;">
-      <input type="search" id="search" placeholder="Search" name="search" title="Search" class="form-control mb-2" style="max-width:200px;">
-      <button class="btn btn-primary">SearchNews <i class="fas fa-search"></i></button>
-      <div class="home_social_icons mt-3">
-        <a href="#"><i class="bx bxl-facebook"></i></a>
-        <a href="#"><i class="bx bxl-twitter"></i></a>
-        <a href="#"><i class="bx bxl-pinterest"></i></a>
-        <a href="#"><i class="bx bxl-youtube"></i></a>
-        <a href="#"><i class="bx bxl-instagram"></i></a>
-      </div>
-    </div>
-  </section>
+      <div class="head container mt-4">
+        <div class="head-txt">
+          <p>
+            Get your newspaper at your doorstep with one simple click. News-mani is your one-stop platform for national newspapers, local editions, exclusive magazines, and premium news content with seamless delivery and flexible plans.
+          </p>
+        </div>
+        <div class="home_label">
+          <p>A specialist platform for ordering newspapers, discovering magazines, and reading quality content at the right time.</p>
+        </div>
 
- <section id="seller">
-  <h2 class="visually-hidden">Sellers</h2>
-  <div class="content">
-    <img src="./assets/hindustan_times.jpeg" alt="Hindustan Times Front Page" class="tv-screen" width="150px"/>
-    <p>Hindustan Times</p>
-    <div class="price">₹10</div>
-    <button class="buy-now btn btn-success">BUY NOW</button>
-    <a href="#ReadNow" class="read-now-button btn btn-outline-primary">READ NOW</a>
-    <button class="add-to-cart-btn btn btn-warning mt-2"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-  </div>
-  <div class="content">
-    <img src="./assets/times_of_india.webp" alt="Times of India Front Page" class="tv-screen" width="150px"/>
-    <p>Times Of India</p>
-    <div class="price">₹10</div>
-    <button class="buy-now btn btn-success">BUY NOW</button>
-    <a href="#ReadNow" class="read-now-button btn btn-outline-primary">READ NOW</a>
-    <button class="add-to-cart-btn btn btn-warning mt-2"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-  </div>
-  <div class="content">
-    <img src="./assets/indian_express.jpeg" alt="Indian Express Front Page" class="tv-screen" width="150px"/>
-    <p>Indian Express</p>
-    <div class="price">₹10</div>
-    <button class="buy-now btn btn-success">BUY NOW</button>
-    <a href="#ReadNow" class="read-now-button btn btn-outline-primary">READ NOW</a>
-    <button class="add-to-cart-btn btn btn-warning mt-2"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-  </div>
-  <div class="content">
-    <img src="./assets/financial_express.jpeg" alt="Financial Express Front Page" class="tv-screen" width="150px"/>
-    <p>Financial Express</p>
-    <div class="price">₹10</div>
-    <button class="buy-now btn btn-success">BUY NOW</button>
-    <a href="#ReadNow" class="read-now-button btn btn-outline-primary">READ NOW</a>
-    <button class="add-to-cart-btn btn btn-warning mt-2"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-  </div>
-  <div class="content">
-    <img src="./assets/the_hindu.jpeg" alt="The Hindu Front Page" class="tv-screen" width="150px"/>
-    <p>The Hindu</p>
-    <div class="price">₹10</div>
-    <button class="buy-now btn btn-success">BUY NOW</button>
-    <a href="#ReadNow" class="read-now-button btn btn-outline-primary">READ NOW</a>
-    <button class="add-to-cart-btn btn btn-warning mt-2"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-  </div>
-</section>
+        <div class="search-tools" aria-label="Search newspapers">
+          <div class="field-group">
+            <label for="search-date">Search by Date</label>
+            <input type="date" id="search-date" name="search-date" class="form-control" title="Search by Date">
+          </div>
+          <div class="field-group">
+            <label for="search">Search by Newspaper</label>
+            <input type="search" id="search" placeholder="Search newspapers" name="search" title="Search" class="form-control">
+          </div>
+          <button type="button" class="btn btn-primary">Search News <i class="fas fa-search" aria-hidden="true"></i></button>
+        </div>
 
-  <section id="shop">
-    <h2 style="text-align: center;">Our Offers</h2>
-    <div class="shop-grid row justify-content-center">
-      <div class="shop-item col-md-3 m-3 text-center">
-        <img src="./assets/magazine.jpeg" alt="magazine" width="150px">
-        <h3>TIMES NOW MAGAZINE</h3>
-        <p>Short product description.</p>
-        <div class="price">₹199</div>
-        <button class="buy-now btn btn-success">Buy Now</button>
+        <div class="home_social_icons mt-3" aria-label="Social media links">
+          <a href="#" aria-label="Facebook"><i class="bx bxl-facebook" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="bx bxl-pinterest" aria-hidden="true"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bx bxl-youtube" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bx bxl-instagram" aria-hidden="true"></i></a>
+        </div>
       </div>
-      <div class="shop-item col-md-3 m-3 text-center">
-        <img src="./assets/magazine_2.webp" alt="magazine_2" width="150px">
-        <h3>PREMIUM MEMBERSHIP</h3>
-        <p>Another great OFFER just for you. You can access all the news and magazine for free for one month and no delivery charge for six months.</p>
-        <div class="price">₹999</div>
-        <button class="buy-now btn btn-success">Buy Now</button>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact">
-    <div class="form">
-      <div class="form-txt">
-        <h4>Information</h4>
-        <h2>Contact Us</h2>
-        <p>As you might expect from a company that began as a high-end interiors contractor, we pay strict attention.</p>
-        <h3>INDIA</h3>
+    <h2 class="section-title">Popular Newspapers</h2>
+    <section id="seller" aria-label="Popular newspapers">
+      <article class="content">
+        <img src="./assets/hindustan_times.jpeg" alt="Hindustan Times front page" class="tv-screen">
+        <p>Hindustan Times</p>
+        <div class="price">₹10</div>
+        <div class="card-actions">
+          <button type="button" class="buy-now btn btn-success">Buy Now</button>
+          <a href="#ReadNow" class="read-now-button btn btn-outline-primary">Read Now</a>
+          <button type="button" class="add-to-cart-btn btn btn-warning"><i class="fas fa-cart-plus" aria-hidden="true"></i> Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="content">
+        <img src="./assets/times_of_india.webp" alt="Times of India front page" class="tv-screen">
+        <p>Times Of India</p>
+        <div class="price">₹10</div>
+        <div class="card-actions">
+          <button type="button" class="buy-now btn btn-success">Buy Now</button>
+          <a href="#ReadNow" class="read-now-button btn btn-outline-primary">Read Now</a>
+          <button type="button" class="add-to-cart-btn btn btn-warning"><i class="fas fa-cart-plus" aria-hidden="true"></i> Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="content">
+        <img src="./assets/indian_express.jpeg" alt="Indian Express front page" class="tv-screen">
+        <p>Indian Express</p>
+        <div class="price">₹10</div>
+        <div class="card-actions">
+          <button type="button" class="buy-now btn btn-success">Buy Now</button>
+          <a href="#ReadNow" class="read-now-button btn btn-outline-primary">Read Now</a>
+          <button type="button" class="add-to-cart-btn btn btn-warning"><i class="fas fa-cart-plus" aria-hidden="true"></i> Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="content">
+        <img src="./assets/financial_express.jpeg" alt="Financial Express front page" class="tv-screen">
+        <p>Financial Express</p>
+        <div class="price">₹10</div>
+        <div class="card-actions">
+          <button type="button" class="buy-now btn btn-success">Buy Now</button>
+          <a href="#ReadNow" class="read-now-button btn btn-outline-primary">Read Now</a>
+          <button type="button" class="add-to-cart-btn btn btn-warning"><i class="fas fa-cart-plus" aria-hidden="true"></i> Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="content">
+        <img src="./assets/the_hindu.jpeg" alt="The Hindu front page" class="tv-screen">
+        <p>The Hindu</p>
+        <div class="price">₹10</div>
+        <div class="card-actions">
+          <button type="button" class="buy-now btn btn-success">Buy Now</button>
+          <a href="#ReadNow" class="read-now-button btn btn-outline-primary">Read Now</a>
+          <button type="button" class="add-to-cart-btn btn btn-warning"><i class="fas fa-cart-plus" aria-hidden="true"></i> Add to Cart</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="shop" aria-labelledby="offers-heading">
+      <h2 id="offers-heading" class="section-title">Our Offers</h2>
+      <div class="shop-grid row justify-content-center">
+        <article class="shop-item col-md-3 m-0 text-center">
+          <img src="./assets/magazine.jpeg" alt="Times Now magazine cover">
+          <h3>Times Now Magazine</h3>
+          <p>Curated weekly stories and premium editorial picks.</p>
+          <div class="price">₹199</div>
+          <button type="button" class="buy-now btn btn-success">Buy Now</button>
+        </article>
+        <article class="shop-item col-md-3 m-0 text-center">
+          <img src="./assets/magazine_2.webp" alt="Premium membership offer">
+          <h3>Premium Membership</h3>
+          <p>Access news and magazines for one month with no delivery charge for six months.</p>
+          <div class="price">₹999</div>
+          <button type="button" class="buy-now btn btn-success">Buy Now</button>
+        </article>
       </div>
-      <form>
-        <label for="name">Your Name</label>
-        <input type="text" id="name" placeholder="Your Name" required title="Your Name" class="form-control mb-2">
-        <label for="email">Your Email</label>
-        <input type="email" id="email" placeholder="Your Email" required title="Your Email" class="form-control mb-2">
-        <label for="message">Your Message</label>
-        <textarea id="message" placeholder="Your Message" required title="Your Message" class="form-control mb-2"></textarea>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-      </form>
-    </div>
-  </section>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="form">
+        <div class="form-txt">
+          <h4>Information</h4>
+          <h2 id="contact-heading">Contact Us</h2>
+          <p>Questions about delivery, subscriptions, or digital reading? Send us a message and our team will help you quickly.</p>
+          <h3>India</h3>
+        </div>
+        <form id="contactForm" novalidate>
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="Your Name" required title="Your Name" class="form-control mb-2">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" placeholder="Your Email" required title="Your Email" class="form-control mb-2">
+          <label for="message">Your Message</label>
+          <textarea id="message" placeholder="Your Message" required title="Your Message" class="form-control mb-2" rows="4"></textarea>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <div id="formMessage" class="form-message" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
 
   <footer class="bg-light py-3 mt-5">
     <div class="footer-content text-center">
-      <p>&copy; 2025 News-mani. All rights reserved.</p>
-      <div class="social-icons">
-        <a href="#"><i class="bx bxl-facebook"></i></a>
-        <a href="#"><i class="bx bxl-twitter"></i></a>
-        <a href="#"><i class="bx bxl-pinterest"></i></a>
-        <a href="#"><i class="bx bxl-youtube"></i></a>
-        <a href="#"><i class="bx bxl-instagram"></i></a>
+      <p>&copy; <span data-current-year>2026</span> News-mani. All rights reserved.</p>
+      <div class="social-icons" aria-label="Social media links">
+        <a href="#" aria-label="Facebook"><i class="bx bxl-facebook" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="bx bxl-pinterest" aria-hidden="true"></i></a>
+        <a href="#" aria-label="YouTube"><i class="bx bxl-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bx bxl-instagram" aria-hidden="true"></i></a>
       </div>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-  <script>
-    
-document.querySelectorAll('.nav-link').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    const ripple = document.createElement('span');
-    ripple.className = 'ripple';
-    const rect = btn.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    ripple.style.width = ripple.style.height = size + 'px';
-    ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-    ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-    btn.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 600); // Remove after animation
-  });
-});
-    // Example: set cart count (replace with your dynamic logic)
-    document.getElementById('cartCount').textContent = localStorage.getItem('cartCount') || '0';
-    
-    // Add to Cart button functionality
-    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        let currentCartCount = Number(localStorage.getItem('cartCount') || 0);
-        currentCartCount++;
-        localStorage.setItem('cartCount', currentCartCount);
-        document.getElementById('cartCount').textContent = currentCartCount;
-        alert('Item added to cart!'); // Optional: provide user feedback
-      });
-    });
-
-    // "Buy Now" buttons in the "Shop" section also update the cart
-    document.querySelectorAll('#shop .buy-now').forEach(btn => {
-      btn.addEventListener('click', function() {
-        let currentCartCount = Number(localStorage.getItem('cartCount') || 0);
-        currentCartCount++;
-        localStorage.setItem('cartCount', currentCartCount);
-        document.getElementById('cartCount').textContent = currentCartCount;
-        alert('Item added to cart and proceeding to checkout (demo)!'); // Optional: provide user feedback
-        // In a real application, you'd redirect to a checkout page here
-      });
-    });
-
-  </script>
 </body>
 </html>

@@ -3,140 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up - News-mani</title>
+  <meta name="description" content="Create a News-mani account for faster newspaper orders.">
+  <title>Sign Up | News-mani</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Minimal page-specific styles */
-    .signup-container {
-      max-width: 400px;
-      margin: 3rem auto;
-      background: #f1f5fd;
-      border-radius: 14px;
-      box-shadow: 0 4px 24px rgba(37,99,235,0.07);
-      padding: 2rem 2.5rem;
-    }
-    .signup-container h2 {
-      text-align: center;
-      color: #2563eb;
-      margin-bottom: 1.5rem;
-    }
-    .signup-container form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .signup-container label {
-      font-weight: 500;
-      color: #222;
-    }
-    .signup-container input {
-      padding: 0.7rem 1rem;
-      border: 1px solid #c7d2fe;
-      border-radius: 6px;
-      font-size: 1rem;
-      outline: none;
-      background: #fff;
-      transition: border 0.2s;
-    }
-    .signup-container input:focus {
-      border-color: #2563eb;
-    }
-    .signup-container button {
-      background: #2563eb;
-      color: #fff;
-      border: none;
-      padding: 0.7rem 1.5rem;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 0.5rem;
-      transition: background 0.2s;
-    }
-    .signup-container button:hover {
-      background: #1e40af;
-    }
-    .signup-message {
-      margin-top: 1rem;
-      text-align: center;
-      font-size: 1rem;
-    }
-    .signup-message.error {
-      color: #d32f2f;
-    }
-    .signup-message.success {
-      color: #2563eb;
-    }
-  </style>
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="signup-container">
-    <h2>Create Your Account</h2>
-    <form id="signupForm" autocomplete="off">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required placeholder="Your Name">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" aria-label="Primary navigation">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html" aria-label="News-mani home">
+        <img src="./assets/logo.jpg" alt="News-mani logo" class="brand-logo">
+        <span>News-mani</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-lg-center mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+          <li class="nav-item">
+            <a class="nav-link position-relative" href="cart.html">
+              <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">0</span>
+              Cart
+            </a>
+          </li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="signup.html">Sign Up</a></li>
+          <li class="nav-item"><a class="nav-link" href="signin.html">Sign In</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required placeholder="you@example.com">
+  <main class="auth-page">
+    <section class="signup-container" aria-labelledby="signup-title">
+      <h1 id="signup-title" class="h2">Create Your Account</h1>
+      <form id="signupForm" autocomplete="off" novalidate>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your name">
 
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required minlength="6" placeholder="Password">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com">
 
-      <label for="confirmPassword">Confirm Password</label>
-      <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6" placeholder="Confirm Password">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required minlength="6" placeholder="At least 6 characters">
 
-      <button type="submit">Sign Up</button>
-      <div id="signupMessage" class="signup-message"></div>
-    </form>
-    <p style="text-align:center; margin-top:1rem;">
-      Already have an account? <a href="signin.html" style="color:#2563eb;">Sign In</a>
-    </p>
-  </div>
-  <script>
-    // filepath: c:\Users\User\.vscode\NewsXwebsite\signup.html
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('confirmPassword').value;
-      const messageDiv = document.getElementById('signupMessage');
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6" placeholder="Confirm password">
 
-      // Simple email validation
-      function validateEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      }
+        <button type="submit">Sign Up</button>
+        <div id="signupMessage" class="signup-message" aria-live="polite"></div>
+      </form>
+      <p class="text-center mt-3 mb-0">Already have an account? <a href="signin.html">Sign In</a></p>
+    </section>
+  </main>
 
-      // Clear previous messages
-      messageDiv.textContent = '';
-      messageDiv.className = 'signup-message';
+  <footer class="bg-light py-3 mt-5">
+    <div class="footer-content text-center">
+      <p>&copy; <span data-current-year>2026</span> News-mani. All rights reserved.</p>
+      <div class="social-icons" aria-label="Social media links">
+        <a href="#" aria-label="Facebook"><i class="bx bxl-facebook" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Twitter"><i class="bx bxl-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="bx bxl-pinterest" aria-hidden="true"></i></a>
+        <a href="#" aria-label="YouTube"><i class="bx bxl-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bx bxl-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </footer>
 
-      if (!name || !email || !password || !confirmPassword) {
-        messageDiv.textContent = 'Please fill out all fields.';
-        messageDiv.classList.add('error');
-        return;
-      }
-      if (!validateEmail(email)) {
-        messageDiv.textContent = 'Please enter a valid email address.';
-        messageDiv.classList.add('error');
-        return;
-      }
-      if (password.length < 6) {
-        messageDiv.textContent = 'Password must be at least 6 characters.';
-        messageDiv.classList.add('error');
-        return;
-      }
-      if (password !== confirmPassword) {
-        messageDiv.textContent = 'Passwords do not match.';
-        messageDiv.classList.add('error');
-        return;
-      }
-
-      // Simulate successful signup
-      messageDiv.textContent = 'Signup successful! You can now sign in.';
-      messageDiv.classList.add('success');
-      this.reset();
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 </body>
 </html>
